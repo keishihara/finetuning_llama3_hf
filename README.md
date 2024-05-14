@@ -13,13 +13,12 @@ NOTE: This project does not involve using recent alternatives like [unsloth](htt
 To install scripts and package from the source, follow the commands below. It is recommended to use `venv` for creating a virtual environment.
 
 ```bash
-git clone ...
+git clone https://github.com/keishihara/finetuning_llama3_hf.git
 cd finetuning_llama3_hf
 python3 -m venv env
 source env/bin/activate
 pip install -U pip setuptools wheel packaging
-pip install -e .
-pip install flash-attn --no-build-isolation # Separate installation required
+pip install -e ".[full]"
 ```
 
 You may encounter missing Python dependencies when running the provided scripts. If so, please install them one at a time as they are needed.
