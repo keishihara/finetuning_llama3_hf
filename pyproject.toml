@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tuner"
+version = "0.0.1"
+authors = [{name = "Keishi Ishihara", email = "keishi.ishihara17@gmail.com"}]
+readme = "README.md"
+requires-python = ">3.10.0"
+license = {file = "LICENSE"}
+classifiers = [
+    "Private :: Do Not Upload",
+]
+dynamic = ["dependencies"]
+
+# [tool.setuptools]
+# package-dir = {"" = "src"}
+[tool.hatch.build.targets.wheel]
+packages = ["src/tuner"]
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements.txt"]
+
+[project.optional-dependencies]
+full = ["flash-attn"]
+
+[tool.ruff]
+line-length = 119
+select = ["ALL"]
+ignore = [
+    "D",
+    "ANN002",
+    "ANN003",
+    "ANN101",
+    "PLR0913", # allow too many arguments
+    "T201", # allow print
+    "FBT001", # allow boolean-typed args
+    "EXE002", # allow being without shebang
+    "ANN401", # allow Any type annotation
+    "SLF001", # allow private member access
+    "INP001", # allow creating namespace package
+    "PD901", # allow assignments to variable `df`
+    "EM102", # allow literal in exception
+    "TRY003", # allow messages in exception
+    "C901", # allow >10 decision points
+    "ANN102", # allow no type annotation for `cls` in classmethod
+    "N801", # allow use of non-CamelCase class names
+    "S105", # allow possible hardcoded string
+]
+exclude = ["*.ipynb"]
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.flake8-quotes]
+inline-quotes = "single"
+
+[project.scripts]
+merge-cli = "tuner.commands.merge_adapter_and_unload:app"
+
+[tool.hatch.build]
+include = ["src/tuner/*"]
