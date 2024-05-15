@@ -171,8 +171,8 @@ def normalize_assistant_messages(thread: list[dict]) -> list[dict]:
         if thread[i]['role'] != 'assistant':
             continue
         content = thread[i]['content']
-        content = replace_eos(content)
-        # FIXME: This may break inline code blocks, links, short novels, markdown texts, and so on
+        content = replace_eos(content) # Some ad-hoc preprocessing
+        # TODO: This may break inline code blocks, links, short novels, markdown texts, and so on
         content = neologdn.normalize(content, tilde='ignore')
         thread[i]['content'] = content
     return thread
