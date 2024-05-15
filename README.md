@@ -8,6 +8,12 @@ NOTE: This project does not involve using recent alternatives like [unsloth](htt
 
 ## Getting Started
 
+### Requirements
+
+- Python 3.10 or higher
+- CUDA 12.1 or higher
+- Compatible NVIDIA GPU (Ampere or higher)
+
 ### Install from Source
 
 To install scripts and package from the source, follow the commands below. It is recommended to use `venv` for creating a virtual environment.
