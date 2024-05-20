@@ -1,10 +1,11 @@
-import pathlib
+from pathlib import Path
 
 from transformers import file_utils
 
-PROJECT_HOME = pathlib.Path(__file__).parents[2]
-PACKAGE_HOME = PROJECT_HOME / 'src' / 'tuner'
+PROJECT_HOME = Path(__file__).parents[2]
 LOG_DIR = PROJECT_HOME / 'logs'
+
+PACKAGE_HOME = Path(__file__).parent
 
 DEFAULT_CACHE_PATH = file_utils.default_cache_path
 
