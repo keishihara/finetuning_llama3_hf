@@ -15,6 +15,7 @@ from tuner.data import (
 )
 from tuner.modeling.trainer import SFTTrainer
 from tuner.utils import (
+    copy_demo_scripts,
     get_quantization_config_and_dtype,
     is_main_process,
     load_dataset_configs,
@@ -37,6 +38,7 @@ def train(
 
     sanity_check_args(args)
     setup_logging_dir(args, prefix=args.prefix, add_hostname=False)
+    copy_demo_scripts(args)
 
     if not isinstance(dataset_configs_or_names, list):
         dataset_configs_or_names = [dataset_configs_or_names]
