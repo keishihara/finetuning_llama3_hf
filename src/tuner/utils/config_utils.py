@@ -6,9 +6,11 @@ import types
 from collections.abc import Sequence
 from dataclasses import asdict, dataclass, is_dataclass
 from pathlib import Path
+from shutil import copytree
 
 import torch
 
+from tuner._constants import PACKAGE_HOME
 from tuner._typing import DatasetConfig, FilePath
 from tuner.configs import dataset_configs as dataset_configs_module
 from tuner.configs.training_args import ScriptArguments
@@ -240,3 +242,13 @@ def setup_logging_dir(
         if makedirs:
             subdir_ = getattr(script_args, f'{subdir_}_dir')
             subdir_.mkdir(exist_ok=True)
+
+
+def copy_demo_scripts(args: ScriptArguments) -> None:
+    if not is_main_process():
+        return
+    src = PACKAGE_HOME / 'demo'
+    if not src.is_dir():
+        raise RuntimeError(f'Source folder `domo` is not found under {src!s}')
+    dst = Path(args.logging_dir) / 'demo'
+    copytree(src, dst, symlinks=False)
