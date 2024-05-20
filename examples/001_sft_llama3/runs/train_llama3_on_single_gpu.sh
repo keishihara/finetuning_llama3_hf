@@ -12,8 +12,8 @@ accelerate launch \
     --bf16 \
     --per_device_train_batch_size 1 \
     --gradient_accumulation_steps 8 \
-    --num_train_epochs 20 \
-    --save_total_limit 10 \
+    --num_train_epochs 5 \
+    --save_total_limit 5 \
     --lora_r 8 \
     --lora_alpha 16 \
     --attn_implementation flash_attention_2
