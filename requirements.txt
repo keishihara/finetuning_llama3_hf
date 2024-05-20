@@ -23,3 +23,5 @@ typer
 pandarallel
 pytest
 neologdn
+jsonlines
+tenacity
