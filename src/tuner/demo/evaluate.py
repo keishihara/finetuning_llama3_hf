@@ -5,10 +5,10 @@ from pathlib import Path
 import numpy as np
 import requests
 from datasets import load_dataset
-from predict_on_elyza_tasks_100 import PredictionWriter
 from tenacity import retry, stop_after_attempt, wait_exponential
 from tqdm import tqdm
 from transformers import AutoTokenizer
+from tuner.demo.predict import PredictionWriter
 from typer import Typer
 
 warnings.simplefilter('ignore')
@@ -52,6 +52,7 @@ PROMPT_TEMPLATE = """
 「採点基準」および「正解例」を参考にして、「問題」に対する「被験者の回答」を1~5の5段階で採点し数字のみを出力してください。
 """
 
+# Llama3 model is assumed as the evaluator
 tokenizer = AutoTokenizer.from_pretrained('meta-llama/Meta-Llama-3-8B-Instruct')
 
 with Path.open(Path(__file__).parent / 'elyza_tasks_100.gbnf') as f:
