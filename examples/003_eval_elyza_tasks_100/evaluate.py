@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 import requests
 from datasets import load_dataset
-from predict_on_elyza_tasks_100 import PredictionWriter
+from predict import PredictionWriter
 from tenacity import retry, stop_after_attempt, wait_exponential
 from tqdm import tqdm
 from transformers import AutoTokenizer
