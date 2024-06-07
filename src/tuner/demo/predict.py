@@ -54,10 +54,10 @@ def setup_logging_dir_and_output_file(model_name_or_path: str, out_dir: str = 'a
 
     if out_dir == 'auto':
         if Path(model_name_or_path).is_dir(): # pretrained model checkpoint
-            out_dir = Path(model_name_or_path) / 'predictions'
+            out_dir = Path(model_name_or_path) / 'results'
             local_or_hf = 'local_model'
         else: # hf model id
-            out_dir = Path(__file__).parent / 'predictions' / model_name_or_path.replace('/', '--')
+            out_dir = Path(__file__).parent / 'results' / model_name_or_path.replace('/', '--')
             local_or_hf = model_name_or_path.replace('/', '--')
     else:
         out_dir = Path(out_dir)
